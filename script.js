@@ -95,21 +95,18 @@ var data;
                 
                 //alert("yay");
           }
+        $('#myModal').modal('show');
         chart.draw(data, options);
         }
 
       var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-
-      google.maps.event.addListener(marker_1, 'click', function() {
-        $('#myModal').modal('show');
-      });
       google.visualization.events.addListener(chart, 'select', toggleVisit);
-
+      // google.visualization.events.addListener(chart, 'select', function() {
+      //   $('#myModal').modal('show');
+      // });
      chart.draw(data, options);
   }
-  google.maps.event.addListener(marker_1, 'click', function() {
-    $('#myModal').modal('show');
-  });
+
 
   $(document).ready(function () {
   $('a[data-toggle=modal], button[data-toggle=modal]').click(function () {
