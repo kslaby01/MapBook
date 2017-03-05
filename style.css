@@ -11,3 +11,17 @@
 .spacer {
     height: 50px;
 }
+
+
+.trip_pic {
+    margin: auto;
+    width: 50%;
+
+}
+
+.trip_ex {
+    position: absolute;
+    margin: auto;
+    padding: 10px;
+    border: 3px solid green;  
+}

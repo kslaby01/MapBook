@@ -1,13 +1,12 @@
 <!doctype html>
 <html>
 <head>
-    <title>MapBook - Home</title>
+    <title>MapBook - Countries</title>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="script.js"></script>
     <!-- our style sheet -->
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="home.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -37,7 +36,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="home_tab"><a href="home.html">Home<span class="sr-only"></span></a></li>
                     <li class="about_tab"><a href="/about">About</a></li>
-                    <li class="countries_tab"><a href="countries.html">Countries</a></li>
+                    <li class="countries_tab"><a href="/countries">Countries</a></li>
                     <li class="trips_tab"><a href="trips.html">Trips</a></li>
                     <li class="dropdown my_account_tab">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
@@ -55,6 +54,35 @@
     <!-- make website content go below navbar -->
     <div class="spacer">
         &nbsp;
+    </div>
+
+
+    <div class="col-md-10">
+        <!-- map -->
+        <div id="regions_div"></div>
+    </div>
+    <div class="col-md-2">
+        <!-- ADD SIDE BAR -->
+    </div>  
+    
+    <!-- mark options pop up dialog-->
+    <div id="visitModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id="modal-title">Country Name</h4>
+                </div>
+                <div id="modal-body">
+                    <button id="Visited">Visited</button>
+                    <button id="WantTo">Want to Visit</button>
+                </div>
+                <div id="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>
