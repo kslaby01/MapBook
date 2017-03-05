@@ -1,0 +1,13 @@
+.nav-logo {
+    max-height: 46px;
+    padding-top: 4px;
+}
+
+#regions_div {
+    width: 100%; 
+    min-height: 100%;
+}
+
+.spacer {
+    height: 50px;
+}
