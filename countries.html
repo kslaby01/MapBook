@@ -28,7 +28,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- <a class="navbar-brand" href="#">MapBook</a> -->
-                <img class="nav-logo" src="mapbook_logo.png">
+                <img class="nav-logo" src="logo_correct_size.png">
             </div>
 
             <!-- Collect the nav links and other content for toggling -->
@@ -62,7 +62,7 @@
         <div id="regions_div"></div>
     </div>
     <div class="col-md-2">
-        <!-- ADD SIDE BAR -->
+
     </div>  
     
     <!-- mark options pop up dialog-->
@@ -75,11 +75,14 @@
                     <h4 id="modal-title">Country Name</h4>
                 </div>
                 <div id="modal-body">
-                    <button id="Visited">Visited</button>
-                    <button id="WantTo">Want to Visit</button>
+                    <input type="checkbox" id="visitedChbx" value="visited_checkbox" checked="checked"/>
+                    <label for="visitedChbx">Visited</label>
+                    <input type="checkbox" id="wntvisitChbx" value="want_visit_checkbox"/>
+                    <label for="wntvisitChbx">Want to Visit</label>
+
                 </div>
                 <div id="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+                    <button type="button" id="btn-close" class="btn btn-default" data-dismiss="modal">Add</button>
                 </div>
             </div>
         </div>
