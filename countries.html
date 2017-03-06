@@ -34,8 +34,8 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right nav_bar">
                     <li class="home_tab"><a href="home.html">Home  <span class="sr-only"></span></a></li>
-                    <li class="about_tab"><a href="/about">About  </a></li>
-                    <li class="countries_tab"><a href="/countries">Countries  </a></li>
+                    <li class="about_tab"><a href="about.html">About  </a></li>
+                    <li class="countries_tab"><a href="countries.html">Countries  </a></li>
                     <li class="trips_tab"><a href="trips.html">Trips  </a></li>
                     <li class="dropdown my_account_tab">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account  <b class="caret"></b></a>
@@ -97,13 +97,17 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 id="modal-title">Country Name</h4>
+                    <p id="modal-title">Country Name</p>
                 </div>
-                <div id="modal-body">
-                    <input type="checkbox" id="visitedChbx" value="visited_checkbox" checked="checked"/>
-                    <label for="visitedChbx">Visited</label>
-                    <input type="checkbox" id="wntvisitChbx" value="want_visit_checkbox"/>
-                    <label for="wntvisitChbx">Want to Visit</label>
+                <div id="modal-body option_list">
+                    <li id="modal_option">
+                        <input type="checkbox" id="visitedChbx" value="visited_checkbox" checked="checked"/>
+                        <label for="visitedChbx">Visited</label>
+                    </li>
+                    <li id="modal_option">
+                        <input type="checkbox" id="wntvisitChbx" value="want_visit_checkbox"/>
+                        <label for="wntvisitChbx">Want to Visit</label>
+                    </li>
 
                 </div>
                 <div id="modal-footer">
