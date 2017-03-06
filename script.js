@@ -50,12 +50,17 @@
         
 
     // }
-var data;
+var data, options, chart;
+var neutralColor = '#F5F5F5';
+var visitedColor = 'blue';
+var wntVisitColor = 'red';
 
-    google.charts.load("visualization", "1", {packages:["geochart"]});
-    google.charts.setOnLoadCallback(drawRegionsMap);
+google.charts.load("visualization", "1", {packages:["geochart"]});
+google.charts.setOnLoadCallback(drawRegionsMap);
 
-      function drawRegionsMap() {
+
+
+  function drawRegionsMap() {
 
       data = google.visualization.arrayToDataTable([
         ['State', 'Visited', {role: 'tooltip', p: {html: 'true'}}],
@@ -67,11 +72,11 @@ var data;
         ['US-MI', 0, '']
       ]);
 
-      var options = {
+      options = {
         displayMode: 'regions',
         resolution:'provinces',
         colorAxis:{
-          colors:['blue','green','red'],
+          colors:[neutralColor, visitedColor, wntVisitColor],
           minValue: 0,
           maxValue:2},
        region:'US',
@@ -82,54 +87,49 @@ var data;
           for (var i = 0; i < data.getNumberOfRows(); i++) {
                 var selection = chart.getSelection()[0];
                 if (i === selection.row) {
-                  var color = data.getValue(i, 1);
-                  if(color === 0) {
-                    data.setValue(i, 1, 2);
-                  }
-                  else if (color === 2) {
-                    data.setValue(i, 1, 1);
-                  } else {
-                    data.setValue(i, 1, 0);
-                  }
+                  console.log(i + " selection: " + selection.row);
+                  dealwithModal(i);
+                  break;
                 }
                 
-                //alert("yay");
           }
-        $('#myModal').modal('show');
-        chart.draw(data, options);
+          chart.draw(data, options);
         }
 
-      var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+      function dealwithModal(i) {
+          $('#visitModal').modal('show');
+          document.getElementById("btn-close").onclick = function() {updateColors(i)};
+          return;
+      }
+
+      chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
       google.visualization.events.addListener(chart, 'select', toggleVisit);
-      // google.visualization.events.addListener(chart, 'select', function() {
-      //   $('#myModal').modal('show');
-      // });
+
      chart.draw(data, options);
   }
 
 
-  $(document).ready(function () {
-  $('a[data-toggle=modal], button[data-toggle=modal]').click(function () {
-    //var buttonData = $.parseJSON($(this).attr('data-button'));
-    //id = buttonData['id'];
-    //clue = currGameLocs[id].clue;
-    //if (buttonData['id'] == 'special')
-    //{
-      //special = buttonData['special'];
-      //for (var locNum in currGameLocs[id])
-      //{
-        //if (currGameLocs[id][locNum].name == special)
-        //{
-        //  clue = currGameLocs[id][locNum].clue;
-        //}
         
-      //}
-    //}
-    //locData = currGameLocs[buttonData['id']]
-    $('#modal-title').text(capitalizeFirstLetter(buttonData['id']));
-    $('#modal-body').text(clue)
-  });
-});
+
+
+function updateColors(i) {
+  if($("#visitedChbx").is(':checked')){
+  // visited color
+
+    data.setValue(i, 1, 2);
+  // Code in the case checkbox is checked.
+  } else if ($("#wntvisitChbx").is(':checked')) {
+  // want to visit color
+    data.setValue(i, 1, 1);
+   // Code in the case checkbox is NOT checked.
+  } else {
+  //default color
+    data.setValue(i, 1, 0);
+  }
+    chart.draw(data, options);
+  return;
+  }
+
 
 // google.charts.load('visualization', '1', {'packages': ['geochart']});
 // google.charts.setOnLoadCallback(drawVisualization);
