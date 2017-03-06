@@ -1,8 +1,3 @@
-    //   google.charts.load('current', {'packages':['geochart']});
-    //   google.charts.setOnLoadCallback(drawRegionsMap);
-
-    //   function drawRegionsMap() {
-
     //     var data = google.visualization.arrayToDataTable([
     //       ['Country', 'Popularity'],
     //       ['Germany', 200],
@@ -13,47 +8,14 @@
     //       ['RU', 700]
     //     ]);
 
-    //    var options = {
-    //       displayMode: 'regions',
-    //       legend: 'None',
-    //       colorAxis: {
-    //          minValue: 0,
-    //          maxValue:2,
-    //         colors: ['blue', 'green', 'red']}
-    //     };
-    //     var container = document.getElementById('regions_div');
-    //     var chart = new google.visualization.GeoChart(container);
-
-
-    //     function myClickHandler(e){
-    //       for (var i = 0; i < data.getNumberOfRows(); i++) {
-    //             var test = chart.getSelection()[0];
-    //             if (i === test.row) {
-    //               data.setValue(i, 1, 100);
-    //             } else {
-    //               data.setValue(i, 1, 0);
-    //             }
-    //       }
-    //     }
-    //     function test(e)
-    //     {
-    //       //this.prop('fillcolor') = '#ffffff';
-    //       var selection = chart.getSelection();
-    //       //alert(data.getValue(selection[0].row, 0));
-    //       alert(data[e.region]);
-    //       alert(e.region);
-    //     }
-
-    //       google.visualization.events.addListener(chart, 'select', myClickHandler);
-    //       //google.visualization.events.addListener(chart, 'regionClick', test);
-    //       chart.draw(data, options);
         
 
     // }
 var data, options, chart;
-var neutralColor = '#F5F5F5';
-var visitedColor = 'blue';
-var wntVisitColor = 'red';
+var neutralColor = '#F5F5F5'; // 0 grey
+var visitedColor = '#0B00B9'; // 1 green
+var wntVisitColor = '#00B90D'; // 2 blue
+
 
 google.charts.load("visualization", "1", {packages:["geochart"]});
 google.charts.setOnLoadCallback(drawRegionsMap);
@@ -108,14 +70,28 @@ google.charts.setOnLoadCallback(drawRegionsMap);
      chart.draw(data, options);
   }
 
+function updateCounts()
+{
+  var visitedCount = 0;
+  var wntVisitCount = 0;
+  for (var i = 0; i < data.getNumberOfRows(); i++) {
+    if(data.qg[i].c[1].v === 2) {
+      visitedCount++;
+    } else if (data.qg[i].c[1].v === 1){
+      wntVisitCount++;
+    } 
+  }
+  document.getElementById("visited_num").innerHTML = visitedCount;
+  document.getElementById("want_num").innerHTML = wntVisitCount;
 
+  return;
+}
         
 
 
 function updateColors(i) {
   if($("#visitedChbx").is(':checked')){
   // visited color
-
     data.setValue(i, 1, 2);
   // Code in the case checkbox is checked.
   } else if ($("#wntvisitChbx").is(':checked')) {
@@ -126,75 +102,7 @@ function updateColors(i) {
   //default color
     data.setValue(i, 1, 0);
   }
-    chart.draw(data, options);
+  chart.draw(data, options);
+  updateCounts();
   return;
-  }
-
-
-// google.charts.load('visualization', '1', {'packages': ['geochart']});
-// google.charts.setOnLoadCallback(drawVisualization);
-
-// var iwmparam = [{
-//     "id":"1",
-//     "txt":"Alert From ID 1"
-// }, {
-//     "id":"2",
-//     "txt":"Alert From ID 2"
-// }];
-
-// var message = new Array();
-
-// function drawVisualization() {
-//     var geocharts = {};
-//     var dataTables = {};
-//     for (var key in iwmparam) {
-//         var id = parseInt(iwmparam[key]['id']);
-        
-//         message[id] = iwmparam[key]['txt'];
-
-
-        
-//         dataTables[key] = google.visualization.arrayToDataTable([
-//             ['Country', 'Visited'],
-//             ['Germany', 0],
-//             ['United States', 1],
-//             ['Brazil', 1],
-//             ['Canada', 0],
-//             ['France', 0],
-//             ['RU', 0]
-//         ]);
-
-//         var options = {
-//           displayMode: 'regions',
-//           legend: 'None',
-//           colorAxis: {
-//              minValue: 0,
-//              maxValue:2,
-//             colors: ['blue', 'green', 'red']}
-//         };
-        
-//         geocharts[key] = new google.visualization.GeoChart(document.getElementById('map_'+id));
-        
-//         // use a closure to lock the value of "key" in this iteration of the loop to "x" inside the closure
-//         google.visualization.events.addListener(geocharts[key], 'select', (function(x) {
-//             return function () {
-//                 var selection = geocharts[x].getSelection();
-                
-//                 if (selection.length == 1) {
-//                     var selectedRow = selection[0].row;
-//                     var selectedRegion = dataTables[x].getValue(selectedRow, 0);
-                    
-//                     alert(selectedRegion);
-//                 }
-//               var test = dataTables[selection[0].row];
-//               dataTables.setValue(i, 1, 2)
-//             }
-//         })(key));
-        
-//         geocharts[key].draw(dataTables[key], {
-//             region:'world',
-//             width: '500', 
-//             legend: 'none'
-//         });
-//     }    
-// }
+}
