@@ -115,6 +115,10 @@ function updateCounts()
       wntVisitCount++;
     } 
   }
+  //$('#checkbox').prop('checked', true); // Checks it
+  $('#visitedChbx').prop('checked', true); // Unchecks it
+  $('#wntvisitChbx').prop('checked', false); // Unchecks it
+
   document.getElementById("visited_num").innerHTML = visitedCount;
   document.getElementById("want_num").innerHTML = wntVisitCount;
 
