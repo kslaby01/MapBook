@@ -41,7 +41,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account  <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="settings">Settings</a></li>
-                            <li role="separator" class="divider"></li>
+                            <hr />
                             <li><a href="/login">Sign out</a></li>
                         </ul>
                     </li>
@@ -60,8 +60,34 @@
         <!-- map -->
         <div id="regions_div"></div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2 key">
+        <div>
+            <li class="key_section_headers">Key</li>
+            <li class="key_item">
+                <img id="visit_hex" src="green_hex.png">
+                <p class="color_name">Visited</p>
+            </li>
 
+            <div class="key_item_spacer">
+                <p>   </p>
+            </div>
+
+            <li class="key_item">
+                <img id="want_visit_hex" src="blue_hex.png">
+                <p class="color_name">Want to Visit</p>
+            </li>
+
+            <hr />
+            <li class="key_section_headers">Country Tally</li>
+            <li class="key_item">
+                <p>Visited: </p>
+                <p id="visited_num">0</p>
+            </li>
+            <li class="key_item">
+                <p>Want to Visit: </p>
+                <p id="want_num">0</p>
+            </li>
+        </div>
     </div>  
     
     <!-- mark options pop up dialog-->

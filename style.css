@@ -1,3 +1,4 @@
+
 .nav-logo {
     max-height: 46px;
     padding-top: 4px;
@@ -23,7 +24,7 @@
 }
 
 .spacer {
-    height: 50px;
+    height: 60px;
 }
 
 
@@ -38,4 +39,39 @@
     margin: auto;
     padding: 10px;
     border: 3px solid green;  
+}
+
+
+/*sidebar - key formatting*/
+
+.key_section_headers {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.key {
+    padding-top: 55px;
+    list-style-type:none;
+    color: #777777;
+}
+
+.key_item {
+    display: inline-block; 
+    display: inline;
+}
+
+.key_item .color_name{
+    float: right; 
+    padding-right: 60px;
+}
+
+#visit_hex {
+    width: 23px;
+    height: 20px;
+}
+
+#want_visit_hex {
+    width: 23px;
+    height: 20px; 
 }
