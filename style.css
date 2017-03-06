@@ -3,6 +3,20 @@
     padding-top: 4px;
 }
 
+.nav_bar li{
+    display: inline-block;
+    padding-left: 10px; 
+}
+
+/* globe icon is supposed to show up on hover but its not working*/
+.nav_bar li.active {
+    font-weight: bold;
+    background-image: url("globe_icon.png");
+    background-size: 70%;
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
 #regions_div {
     width: 100%; 
     min-height: 100%;
