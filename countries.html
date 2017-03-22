@@ -5,6 +5,7 @@
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="script.js"></script>
+    <script src="https://cdn.rawgit.com/konvajs/konva/1.5.0/konva.min.js"></script>
     <!-- our style sheet -->
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -14,6 +15,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
+    <script src="jscolor.js"></script>
 </head>
 <body>
     <!-- nav bar -->
@@ -64,8 +66,10 @@
         <div>
             <li class="key_section_headers">Key</li>
             <li class="key_item">
-                <img id="visit_hex" src="green_hex.png">
-                <p class="color_name">Visited</p>
+                <!-- <img id="visit_hex" src="green_hex.png"> -->
+                <div id="shape_container_v"></div>
+                <input class="jscolor" onchange="hexColorUpdate(this.jscolor, 'visit')" value="00B90D">
+                <p class="color_name" id="visit_txt">Visited</p>
             </li>
 
             <div class="key_item_spacer">
@@ -73,8 +77,11 @@
             </div>
 
             <li class="key_item">
-                <img id="want_visit_hex" src="blue_hex.png">
-                <p class="color_name">Want to Visit</p>
+                <!-- <img id="want_visit_hex" src="blue_hex.png"> -->
+                <div id="shape_container_w"></div>
+                <input class="jscolor" onchange="hexColorUpdate(this.jscolor, 'want')" value="0B00B9">
+                <!-- <div id="shape_container"></div> -->
+                <p class="color_name" id="want_txt">Want to Visit</p>
             </li>
 
             <hr />
@@ -90,32 +97,22 @@
         </div>
     </div>  
     
-    <!-- mark options pop up dialog-->
-    <div id="visitModal" class="modal fade" role="dialog">
+    <div id="helpModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-            <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <p id="modal-title">Country Name</p>
+                    <p id="modal-title">Getting Started</p>
                 </div>
-                <div id="modal-body option_list">
-                    <li id="modal_option">
-                        <input type="checkbox" id="visitedChbx" value="visited_checkbox" checked="checked"/>
-                        <label for="visitedChbx">Visited</label>
-                    </li>
-                    <li id="modal_option">
-                        <input type="checkbox" id="wntvisitChbx" value="want_visit_checkbox"/>
-                        <label for="wntvisitChbx">Want to Visit</label>
-                    </li>
-
+                <div id="modal-body">
+                    <p>Welcome to MapBook. To get started, select a hexagon from the Key menu. The larger of the two hexagons is the current painting color. If none are large, then the default 'grey' will be painted instead.</p>
+                    <p>To change a color select the box and highlight the color in the color wheel. When done, press out of the box and the color will be applied.</p>
                 </div>
                 <div id="modal-footer">
-                    <button type="button" id="btn-close" class="btn btn-default" data-dismiss="modal">Add</button>
+                    <button type="button" id="btn-close" class="btn btn-default" data-dismiss="modal">Let's Go!</button>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 </html>
