@@ -138,6 +138,18 @@ function updateColors(i) {
   return;
 }
 
+function resetAll() {
+    VISITING = false;
+    WANTING = false;
+    hexagon1.radius(DEFAULT_RADIUS);
+    hexagon2.radius(DEFAULT_RADIUS);
+    layer1.draw();
+    layer2.draw();
+    for (var i = 0; i < data.getNumberOfRows(); i++) {
+      updateColors(i);
+    }
+}
+
 
 // Hexagon color changing
 var hexagon1, hexagon2, layer1, layer2;
@@ -213,7 +225,6 @@ window.onload = function() {
 };
 
 function hexColorUpdate(jscolor, type) {
-      //test(jscolor
       if (type == 'visit'){
           visitedColor = '#' + jscolor;
           hexagon1.fill(visitedColor);
